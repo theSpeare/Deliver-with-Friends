@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deliver-with-Friends.CSharp", "Deliver-with-Friends.CSharp.csproj", "{10400FBA-DB27-72A9-AA62-130191C9360B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deliver-with-Friends.CSharp.Editor", "Deliver-with-Friends.CSharp.Editor.csproj", "{63F316E8-BBF2-5FFA-9F64-E32F3FE513A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10400FBA-DB27-72A9-AA62-130191C9360B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10400FBA-DB27-72A9-AA62-130191C9360B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10400FBA-DB27-72A9-AA62-130191C9360B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10400FBA-DB27-72A9-AA62-130191C9360B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63F316E8-BBF2-5FFA-9F64-E32F3FE513A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63F316E8-BBF2-5FFA-9F64-E32F3FE513A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63F316E8-BBF2-5FFA-9F64-E32F3FE513A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63F316E8-BBF2-5FFA-9F64-E32F3FE513A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

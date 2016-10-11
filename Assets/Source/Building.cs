@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Building : MonoBehaviour {
 
@@ -20,5 +21,24 @@ public class Building : MonoBehaviour {
     {
         sizeX = _sizeX;
         sizeY = _sizeY;
+    }
+
+    public void createBuilding (Type type)
+    {
+        switch (type)
+        {
+            case (Type.house):
+                sizeX = 1;
+                sizeY = 2;
+                return;
+
+
+
+
+        }
+
+
+
+
     }
 }

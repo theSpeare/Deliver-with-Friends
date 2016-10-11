@@ -19,6 +19,8 @@ public class GameGrid : MonoBehaviour {
     [SerializeField]
     private LayerMask roadMask;
 
+    public bool debugDraw;
+
     void Awake () {
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeSize);
         gridSizeZ = Mathf.RoundToInt(gridWorldSize.z / nodeSize);
@@ -34,15 +36,22 @@ public class GameGrid : MonoBehaviour {
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.z));
-        if (grid != null)
-            foreach (GridNode node in grid)
-            {
-                Gizmos.color = Color.green;
-                if (node.walkable)
-                    Gizmos.color = Color.blue;
-                Gizmos.DrawWireCube(node.worldPoint, new Vector3(0.4f,0,0.4f));
-            }
+        if (debugDraw)
+        {
+
+            Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.z));
+            if (grid != null)
+                foreach (GridNode node in grid)
+                {
+                    Gizmos.color = Color.green;
+                    if (node.walkable)
+                        Gizmos.color = Color.blue;
+                    Gizmos.DrawWireCube(node.worldPoint, new Vector3(0.4f, 0, 0.4f));
+                }
+        }
+
+        Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.forward * gridWorldSize.z / 2;
+        Gizmos.DrawCube(worldBottomLeft, Vector3.one);
     }
 
 
@@ -57,12 +66,12 @@ public class GameGrid : MonoBehaviour {
             for (int z = 0; z < gridSizeZ; z++)
             {
                 
-                Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeSize + nodeSizeHalf) + Vector3.forward * (z * nodeSize + nodeSize / 2);
+                Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeSize + nodeSizeHalf) + Vector3.forward * (z * nodeSize + nodeSizeHalf);
 
-                
-                bool isRoad = (Physics.CheckSphere(worldPoint, nodeSize/3, roadMask));
 
-                grid[x, z] = new GridNode(x, z, worldPoint, isRoad);
+                bool walkable = (Physics.CheckSphere(worldPoint, nodeSize/3, roadMask));
+
+                grid[x, z] = new GridNode(x, z, worldPoint, walkable);
             }
         }
 
@@ -78,6 +87,14 @@ public class GameGrid : MonoBehaviour {
         int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);
         int z = Mathf.RoundToInt((gridSizeZ - 1) * percentZ);
         return grid[x, z];
+    }
+
+    public Vector3 WorldPointFromGrid(int x, int z)
+    {
+        Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.forward * gridWorldSize.z / 2;
+        Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeSize + nodeSizeHalf) + Vector3.forward * (z * nodeSize + nodeSizeHalf);
+
+        return worldPoint;
     }
 
     public List<GridNode> GetNeighbours(GridNode node)

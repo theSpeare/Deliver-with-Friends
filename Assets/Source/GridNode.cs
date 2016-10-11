@@ -15,7 +15,7 @@ public class GridNode {
     public bool walkable;
     public bool road;
 
-    public GridNode(int _gridX, int _gridZ, Vector3 _worldPoint, bool _walkable = false)
+    public GridNode(int _gridX, int _gridZ, Vector3 _worldPoint, bool _walkable)
     {
         gridX = _gridX;
         gridZ = _gridZ;
