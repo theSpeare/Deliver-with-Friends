@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\DebugGridInspector.cs" />
+    <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\Source\Building.cs" />
     <Compile Include="Assets\Source\BuildingProperties.cs" />
     <Compile Include="Assets\Source\GameGrid.cs" />
