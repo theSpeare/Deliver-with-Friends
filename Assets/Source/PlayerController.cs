@@ -3,14 +3,24 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-
     public float speed;
-
     private Rigidbody rb;
-    public int playerNumber;
+
+    private int playerNumber;
+    public Player player;
+
+    void Awake()
+    {
+        Debug.Log("player is awake");
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        player = this.GetComponent<Player>();
+        playerNumber = player.getPlayerNumber();
+
+        Debug.Log("This player is player number: " + playerNumber);
     }
 
     void FixedUpdate()
@@ -27,5 +37,11 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
         rb.AddForce(movement * speed);
+    }
+    
+
+    public int getPlayerId(Player player)
+    {
+        return player.getPlayerNumber();
     }
 }

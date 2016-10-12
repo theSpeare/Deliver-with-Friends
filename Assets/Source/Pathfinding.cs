@@ -69,9 +69,9 @@ public class Pathfinding : MonoBehaviour
             GridNode node = openSet[0];
             for (int i = 1; i < openSet.Count; i++)
             {
-                if (openSet[i].fCost < node.fCost || openSet[i].fCost == node.fCost)
+                if (openSet[i].pathfinding.fCost < node.pathfinding.fCost || openSet[i].pathfinding.fCost == node.pathfinding.fCost)
                 {
-                    if (openSet[i].hCost < node.hCost)
+                    if (openSet[i].pathfinding.hCost < node.pathfinding.hCost)
                         node = openSet[i];
                 }
             }
@@ -92,12 +92,12 @@ public class Pathfinding : MonoBehaviour
                     continue;
                 }
 
-                int newCostToNeighbour = node.gCost + GetDistance(node, neighbour);
-                if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
+                int newCostToNeighbour = node.pathfinding.gCost + GetDistance(node, neighbour);
+                if (newCostToNeighbour < neighbour.pathfinding.gCost || !openSet.Contains(neighbour))
                 {
-                    neighbour.gCost = newCostToNeighbour;
-                    neighbour.hCost = GetDistance(neighbour, targetNode);
-                    neighbour.parent = node;
+                    neighbour.pathfinding.gCost = newCostToNeighbour;
+                    neighbour.pathfinding.hCost = GetDistance(neighbour, targetNode);
+                    neighbour.pathfinding.parent = node;
 
                     if (!openSet.Contains(neighbour))
                         openSet.Add(neighbour);
@@ -114,7 +114,7 @@ public class Pathfinding : MonoBehaviour
         while (currentNode != startNode)
         {
             path.Add(currentNode);
-            currentNode = currentNode.parent;
+            currentNode = currentNode.pathfinding.parent;
         }
         path.Reverse();
 

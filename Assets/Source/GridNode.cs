@@ -6,14 +6,11 @@ public class GridNode {
     public int gridX;
     public int gridZ;
     public Vector3 worldPoint;
-
-
-    public int gCost;
-    public int hCost;
-    public GridNode parent;
-
+    
     public bool walkable;
     public bool road;
+
+    public PathfindingInfo pathfinding;
 
     public GridNode(int _gridX, int _gridZ, Vector3 _worldPoint, bool _walkable)
     {
@@ -23,11 +20,19 @@ public class GridNode {
         walkable = _walkable;
     }
 
-    public int fCost
+
+    public class PathfindingInfo
     {
-        get
+        public int gCost;
+        public int hCost;
+        public GridNode parent;
+
+        public int fCost
         {
-            return gCost + hCost;
+            get
+            {
+                return gCost + hCost;
+            }
         }
     }
 }
